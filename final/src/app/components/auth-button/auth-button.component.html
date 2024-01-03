@@ -1,0 +1,2 @@
+<button type="button" class="btn btn-danger" *ngIf="!(auth.isAuthenticated$ | async)" (click)="login()">Login</button>
+<button type="button" class="btn btn-danger" *ngIf="(auth.isAuthenticated$ | async)" (click)="login()">Logout</button>
