@@ -21,7 +21,7 @@ export class ExerciseService {
         console.error('Error fetching exercises by body part:', error);
         throw error;
       })
-    );;
+    );
   }
   getExercisesByEquipmentType(type: string): Observable<ExerciseResponse[]> {
     const url = `${this.apiUrl}/exercises/equipment/${type}`;

@@ -17,7 +17,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AppComponent,
     ExerciseComponent,
     AuthButtonComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,13 +28,13 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
       clientId: environment.auth.clientId,
       authorizationParams: {
         redirect_uri: window.location.origin,
-        audience:'https://pet-finder'
-      }
-    })
+        audience: 'https://pet-finder', //ask Jonathan about this, it's wrong but I'm not sure what to replace it with
+      },
+    }),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
