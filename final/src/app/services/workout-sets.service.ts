@@ -16,8 +16,12 @@ export class WorkoutSetsService {
     return this.http.post<WorkoutSets>(this.apiUrl, workoutSets);
   }
 
-  getWorkoutSetsByUserId(userId: string): Observable<WorkoutSets[]> {
-    return this.http.get<WorkoutSets[]>(`${this.apiUrl}/${userId}`);
+  getWorkoutSetsByPlanId(workoutPlanId: number): Observable<WorkoutSets[]> {
+    return this.http.get<WorkoutSets[]>(`${this.apiUrl}/plans/${workoutPlanId}`);
+  }
+
+  getWorkoutSetsById(workoutSetId: number): Observable<WorkoutSets>{
+    return this.http.get<WorkoutSets>(`${this.apiUrl}/${workoutSetId}`)
   }
 
   updateWorkoutSets(

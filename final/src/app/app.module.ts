@@ -11,6 +11,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment.development';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { WorkoutPlanListComponent } from './components/workout-plan/workout-plan-list/workout-plan-list.component';
+import { WorkoutPlanDetailsComponent } from './components/workout-plan/workout-plan-details/workout-plan-details.component';
+import { WorkoutPlanCreateComponent } from './components/workout-plan/workout-plan-create/workout-plan-create.component';
+import { WorkoutPlanEditComponent } from './components/workout-plan/workout-plan-edit/workout-plan-edit.component';
+import { WorkoutSetsListComponent } from './components/workout-sets/workout-sets-list/workout-sets-list.component';
+import { WorkoutSetsDetailsComponent } from './components/workout-sets/workout-sets-details/workout-sets-details.component';
+import { WorkoutSetsCreateComponent } from './components/workout-sets/workout-sets-create/workout-sets-create.component';
+import { WorkoutSetsEditComponent } from './components/workout-sets/workout-sets-edit/workout-sets-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +26,15 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ExerciseComponent,
     AuthButtonComponent,
     HeaderComponent,
+    workout-components
+    WorkoutPlanListComponent,
+    WorkoutPlanDetailsComponent,
+    WorkoutPlanCreateComponent,
+    WorkoutPlanEditComponent,
+    WorkoutSetsListComponent,
+    WorkoutSetsDetailsComponent,
+    WorkoutSetsCreateComponent,
+    WorkoutSetsEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +45,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
       clientId: environment.auth.clientId,
       authorizationParams: {
         redirect_uri: window.location.origin,
-        audience: 'https://pet-finder', //ask Jonathan about this, it's wrong but I'm not sure what to replace it with
+        workout-components
+        audience: 'https://pet-finder',
       },
     }),
   ],
