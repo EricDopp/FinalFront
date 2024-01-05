@@ -18,7 +18,11 @@ export class WorkoutPlanService {
   }
 
   getWorkoutPlansByUserId(userId: string): Observable<WorkoutPlan[]> {
-    return this.http.get<WorkoutPlan[]>(`${this.apiUrl}/${userId}`);
+    return this.http.get<WorkoutPlan[]>(`${this.apiUrl}/users/${userId}`);
+  }
+
+  getWorkoutPlanById(workoutPlanId: number): Observable<WorkoutPlan>{
+    return this.http.get<WorkoutPlan>(`${this.apiUrl}/${workoutPlanId}`)
   }
 
   updateWorkoutPlan(workoutPlanId: number, workoutPlan: WorkoutPlan): Observable<WorkoutPlan> {

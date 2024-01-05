@@ -11,13 +11,29 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment.development';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { WorkoutPlanListComponent } from './components/workout-plan/workout-plan-list/workout-plan-list.component';
+import { WorkoutPlanDetailsComponent } from './components/workout-plan/workout-plan-details/workout-plan-details.component';
+import { WorkoutPlanCreateComponent } from './components/workout-plan/workout-plan-create/workout-plan-create.component';
+import { WorkoutPlanEditComponent } from './components/workout-plan/workout-plan-edit/workout-plan-edit.component';
+import { WorkoutSetsListComponent } from './components/workout-sets/workout-sets-list/workout-sets-list.component';
+import { WorkoutSetsDetailsComponent } from './components/workout-sets/workout-sets-details/workout-sets-details.component';
+import { WorkoutSetsCreateComponent } from './components/workout-sets/workout-sets-create/workout-sets-create.component';
+import { WorkoutSetsEditComponent } from './components/workout-sets/workout-sets-edit/workout-sets-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExerciseComponent,
     AuthButtonComponent,
-    HeaderComponent
+    HeaderComponent,
+    WorkoutPlanListComponent,
+    WorkoutPlanDetailsComponent,
+    WorkoutPlanCreateComponent,
+    WorkoutPlanEditComponent,
+    WorkoutSetsListComponent,
+    WorkoutSetsDetailsComponent,
+    WorkoutSetsCreateComponent,
+    WorkoutSetsEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,13 +44,13 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
       clientId: environment.auth.clientId,
       authorizationParams: {
         redirect_uri: window.location.origin,
-        audience:'https://pet-finder'
-      }
-    })
+        audience: 'https://pet-finder',
+      },
+    }),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
