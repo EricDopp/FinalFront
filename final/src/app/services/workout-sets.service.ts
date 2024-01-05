@@ -5,7 +5,7 @@ import { WorkoutSets } from '../models/workout-sets';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WorkoutSetsService {
   private apiUrl = `${environment.exerciseDbApiUrl}`;
@@ -24,8 +24,14 @@ export class WorkoutSetsService {
     return this.http.get<WorkoutSets>(`${this.apiUrl}/${workoutSetId}`)
   }
 
-  updateWorkoutSets(workoutSetId: number, workoutSets: WorkoutSets): Observable<WorkoutSets> {
-    return this.http.put<WorkoutSets>(`${this.apiUrl}/${workoutSetId}`, workoutSets);
+  updateWorkoutSets(
+    workoutSetId: number,
+    workoutSets: WorkoutSets
+  ): Observable<WorkoutSets> {
+    return this.http.put<WorkoutSets>(
+      `${this.apiUrl}/${workoutSetId}`,
+      workoutSets
+    );
   }
 
   deleteWorkoutSets(workoutSetId: number): Observable<void> {

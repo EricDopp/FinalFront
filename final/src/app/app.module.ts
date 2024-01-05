@@ -26,6 +26,7 @@ import { WorkoutSetsEditComponent } from './components/workout-sets/workout-sets
     ExerciseComponent,
     AuthButtonComponent,
     HeaderComponent,
+    workout-components
     WorkoutPlanListComponent,
     WorkoutPlanDetailsComponent,
     WorkoutPlanCreateComponent,
@@ -44,6 +45,7 @@ import { WorkoutSetsEditComponent } from './components/workout-sets/workout-sets
       clientId: environment.auth.clientId,
       authorizationParams: {
         redirect_uri: window.location.origin,
+        workout-components
         audience: 'https://pet-finder',
       },
     }),
