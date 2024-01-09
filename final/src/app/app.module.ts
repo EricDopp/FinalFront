@@ -45,13 +45,12 @@ import { WorkoutSetsEditComponent } from './components/workout-sets/workout-sets
       clientId: environment.auth.clientId,
       authorizationParams: {
         redirect_uri: window.location.origin,
-        workout-components
-        audience: 'https://pet-finder',
+        audience: 'https://icy-river-0a26b650f.4.azurestaticapps.net', 
       },
     }),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

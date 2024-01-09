@@ -1,76 +1,56 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, catchError, tap } from 'rxjs';
-import { ExerciseResponse, ListResponse } from '../models/exercise-response';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ExerciseService {
-  private apiUrl = `${environment.exerciseDbApiUrl}`;
-  private rapidApiKey = ''; // Replace with your actual RapidAPI key but only when testing
+  private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getExercisesByBodyPart(bodyPart: string): Observable<ExerciseResponse[]> {
-    const url = `${this.apiUrl}/exercises/bodyPart/${bodyPart}`;
-    return this.makeGetRequest<ExerciseResponse[]>(url).pipe(
-      tap((data) => console.log('Exercises by Body Part Data:', data)), // Log the response data
-      catchError((error) => {
-        console.error('Error fetching exercises by body part:', error);
-        throw error;
-      })
-    );
+  getExerciseDBsByBodyPart(bodyPart: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/ExerciseDB/exerciseByBodyPart/${bodyPart}`);
   }
-  getExercisesByEquipmentType(type: string): Observable<ExerciseResponse[]> {
-    const url = `${this.apiUrl}/exercises/equipment/${type}`;
-    return this.makeGetRequest<ExerciseResponse[]>(url);
+
+  getBodyPartList(): Observable<string> {
+    try{
+      console.log('What is up bro?')
+      return this.http.get<string>(`${this.apiUrl}/api/ExerciseDB/exercises/bodyPartList`);
+    }
+    catch (error:any){
+      console.log(error);
+    }
+    return of ('')
   }
-  getExercisesByTarget(target: string): Observable<ExerciseResponse[]> {
-    const url = `${this.apiUrl}/exercises/target/${target}`;
-    return this.makeGetRequest<ExerciseResponse[]>(url);
+
+  getEquipmentList(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/ExerciseDB/exercises/equipmentList`);
   }
-  getExerciseById(id: string): Observable<ExerciseResponse> {
-    const url = `${this.apiUrl}/exercises/exercise/${id}`;
-    return this.makeGetRequest<ExerciseResponse>(url);
+
+  getTargetList(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/ExerciseDB/exercises/targetList`);
   }
-  getExercisesByName(name: string): Observable<ExerciseResponse[]> {
-    const url = `${this.apiUrl}/exercises/name/${name}`;
-    return this.makeGetRequest<ExerciseResponse[]>(url);
+
+  getExercisesByEquipment(equipment: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/ExerciseDB/exercises/equipment/${equipment}`);
   }
-  getAllExercises(): Observable<ExerciseResponse[]> {
-    const url = `${this.apiUrl}/exercises`;
-    return this.makeGetRequest<ExerciseResponse[]>(url);
+
+  getExercisesByTarget(target: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/ExerciseDB/exercises/target/${target}`);
   }
-  // getBodyPartList(): Observable<ListResponse> {
-  //   const url = `${this.apiUrl}/exercises/bodyPartList`;
-  //   return this.makeGetRequest<ListResponse>(url);
-  // }
-  getBodyPartList(): Observable<string[]> {
-    const url = `${this.apiUrl}/exercises/bodyPartList`;
-    return this.makeGetRequest<string[]>(url).pipe(
-      tap((data) => console.log('Body Part List Data:', data)),
-      catchError((error) => {
-        console.error('Error fetching body part list:', error);
-        throw error;
-      })
-    );
+
+  getExerciseById(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/ExerciseDB/exercises/exercise/${id}`);
   }
-  getEquipmentList(): Observable<ListResponse> {
-    const url = `${this.apiUrl}/exercises/equipmentList`;
-    return this.makeGetRequest<ListResponse>(url);
+
+  getExerciseByName(name: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/ExerciseDB/exercises/name/${name}`);
   }
-  getTargetList(): Observable<ListResponse> {
-    const url = `${this.apiUrl}/exercises/targetList`;
-    return this.makeGetRequest<ListResponse>(url);
-  }
-  private makeGetRequest<T>(url: string): Observable<T> {
-    return this.http.get<T>(url, { headers: this.getHeaders() });
-  }
-  private getHeaders(): HttpHeaders {
-    return new HttpHeaders()
-      .set('X-RapidAPI-Key', this.rapidApiKey)
-      .set('X-RapidAPI-Host', 'exercisedb.p.rapidapi.com');
+
+  getAllExercises(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/ExerciseDB/exercises`);
   }
 }
