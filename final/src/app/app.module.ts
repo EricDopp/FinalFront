@@ -28,12 +28,12 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
       clientId: environment.auth.clientId,
       authorizationParams: {
         redirect_uri: window.location.origin,
-        audience: 'https://pet-finder', //ask Jonathan about this, it's wrong but I'm not sure what to replace it with
+        audience: 'https://icy-river-0a26b650f.4.azurestaticapps.net', 
       },
     }),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

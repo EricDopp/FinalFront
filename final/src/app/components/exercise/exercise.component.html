@@ -1,15 +1,8 @@
 <div>
-  <h2>Exercises by Body Part</h2>
-  <ul>
-    <li *ngFor="let exercise of bodyPartExercises">
-      {{ exercise.name }} - Target: {{ exercise.target }}
-    </li>
-  </ul>
-</div>
-
-<div>
   <h2>Body Part List</h2>
   <ul>
-    <li *ngFor="let bodyPart of bodyPartList">{{ bodyPart }}</li>
+    <li *ngFor="let bodyPart of bodyPartList">
+      {{ bodyPart }}
+    </li>
   </ul>
 </div>
