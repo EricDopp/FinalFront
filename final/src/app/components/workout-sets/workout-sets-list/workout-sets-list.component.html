@@ -1,1 +1,33 @@
-<p>workout-sets-list works!</p>
+<div class="container mt-4">
+    <h2>Workout Sets List</h2>
+  
+    <div *ngIf="workoutSets.length > 0 else noWorkoutSets">
+      <ul class="list-group">
+        <li *ngFor="let workoutSet of workoutSets" class="list-group-item">
+          <div class="d-flex justify-content-between">
+            <div>
+              <strong>Exercise ID:</strong> {{ workoutSet.exerciseDBId }}
+            </div>
+            <div>
+              <strong>Rep Count:</strong> {{ workoutSet.repCount }}
+            </div>
+            <div>
+              <strong>Weight:</strong> {{ workoutSet.weight }} {{ workoutSet.weightUnit }}
+            </div>
+            <div>
+              <strong>Set Count:</strong> {{ workoutSet.workoutSetCount }}
+            </div>
+            <div>
+              <strong>Sort Order:</strong> {{ workoutSet.sortOrder }}
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  
+    <ng-template #noWorkoutSets>
+      <p>No workout sets available for this workout plan.</p>
+    </ng-template>
+  
+  </div>
+  

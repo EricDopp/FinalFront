@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root',
 })
 export class WorkoutSetsService {
-  private apiUrl = `${environment.apiUrl}`;
+  private apiUrl = `${environment.apiUrl}/api/WorkoutSets`;
 
   constructor(private http: HttpClient) {}
 

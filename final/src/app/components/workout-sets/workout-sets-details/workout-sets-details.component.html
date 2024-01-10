@@ -1,1 +1,28 @@
-<p>workout-sets-details works!</p>
+<div class="container mt-4">
+    <h2>Workout Set Details</h2>
+  
+    <div class="card">
+      <div class="card-body">
+  
+        <div class="mb-3">
+          <label for="exerciseId" class="form-label">Exercise ID</label>
+          <input type="text" class="form-control" id="exerciseId" value="{{ workoutSet.exerciseDBId }}" readonly>
+        </div>
+  
+        <div class="mb-3">
+          <label for="repCount" class="form-label">Rep Count</label>
+          <input type="text" class="form-control" id="repCount" value="{{ workoutSet.repCount }}" readonly>
+        </div>
+  
+        <div class="mb-3">
+          <label for="weight" class="form-label">Weight</label>
+          <input type="text" class="form-control" id="weight" value="{{ workoutSet.weight }} {{ workoutSet.weightUnit }}" readonly>
+        </div>
+  
+        <div class="mb-3">
+          <label for="setCount" class="form-label">Workout Set Count</label>
+          <input type="text" class="form-control" id="setCount" value="{{ workoutSet.workoutSetCount }}" readonly>
+        </div>  
+      </div>
+    </div>
+  </div>  

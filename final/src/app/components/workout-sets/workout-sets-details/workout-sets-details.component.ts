@@ -28,7 +28,7 @@ export class WorkoutSetsDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.workoutSetId = +this.route.snapshot.paramMap.get('workoutSetId')! || 0;
+    this.workoutSetId = 11;
 
     this.workoutSetsService.getWorkoutSetsById(this.workoutSetId).subscribe({
       next: (data: WorkoutSets) => {

@@ -1,1 +1,33 @@
-<p>workout-sets-create works!</p>
+<div class="container mt-4">
+    <h2>Create Workout Set</h2>
+    <form (ngSubmit)="createWorkoutSet()" #workoutSetForm="ngForm">
+  
+      <div class="mb-3">
+        <label for="repCount" class="form-label">Rep Count</label>
+        <input type="number" class="form-control" id="repCount" [(ngModel)]="workoutSets.repCount" name="repCount" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="weight" class="form-label">Weight</label>
+        <input type="number" class="form-control" id="weight" [(ngModel)]="workoutSets.weight" name="weight" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="weightUnit" class="form-label">Weight Unit</label>
+        <input type="text" class="form-control" id="weightUnit" [(ngModel)]="workoutSets.weightUnit" name="weightUnit" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="setCount" class="form-label">Workout Set Count</label>
+        <input type="number" class="form-control" id="setCount" [(ngModel)]="workoutSets.workoutSetCount" name="setCount" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="sortOrder" class="form-label">Sort Order</label>
+        <input type="number" class="form-control" id="sortOrder" [(ngModel)]="workoutSets.sortOrder" name="sortOrder" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Create Workout Set</button>
+    </form>
+  </div>
+  

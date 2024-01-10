@@ -12,9 +12,9 @@ import { WorkoutSets } from 'src/app/models/workout-sets';
 export class WorkoutSetsCreateComponent {
   workoutSets: WorkoutSets = {
     workoutSetId: 0,
-    workoutPlanId: 0,
-    userId: '',
-    exerciseDBId: '',
+    workoutPlanId: 6,
+    userId: 'user123',
+    exerciseDBId: 'exercise123',
     repCount: 0,
     weight: 0,
     weightUnit: '',
