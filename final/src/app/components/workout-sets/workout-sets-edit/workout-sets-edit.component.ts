@@ -12,10 +12,10 @@ import { WorkoutSets } from 'src/app/models/workout-sets';
 export class WorkoutSetsEditComponent implements OnInit {
   workoutSetId: number = 0;
   workoutSets: WorkoutSets = {
-    workoutSetId: 0,
-    workoutPlanId: 0,
-    userId: '',
-    exerciseDBId: '',
+    workoutSetId: 12,
+    workoutPlanId: 6,
+    userId: 'user123',
+    exerciseDBId: 'exercise123',
     repCount: 0,
     weight: 0,
     weightUnit: '',
@@ -29,7 +29,7 @@ export class WorkoutSetsEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.workoutSetId = +this.route.snapshot.paramMap.get('workoutSetId')! || 0;
+    this.workoutSetId = 12;
 
     this.workoutSetsService.getWorkoutSetsById(this.workoutSetId).subscribe({
       next: (data: WorkoutSets) => {
