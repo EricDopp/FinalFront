@@ -10,8 +10,8 @@ import { WorkoutPlanService } from 'src/app/services/workout-plan.service';
 })
 export class WorkoutPlanDetailsComponent implements OnInit {
   workoutPlan: WorkoutPlan = {
-    workoutPlanId: 0,
-    userId: '',
+    workoutPlanId: 7,
+    userId: 'user123',
     workoutPlanName: '',
     weekDay: '',
     createdAt: new Date(),
@@ -24,7 +24,7 @@ export class WorkoutPlanDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const workoutPlanId = this.route.snapshot.params['id'];
+    const workoutPlanId = 7;
     this.getWorkoutPlan(workoutPlanId);
   }
 
@@ -37,5 +37,13 @@ export class WorkoutPlanDetailsComponent implements OnInit {
         console.error(error);
       },
     });
+  }
+
+  // Helper function to map comma-delimited string to weekday names
+  getWeekdays(): string[] {
+    const selectedDays = this.workoutPlan.weekDay.split(',').map(Number);
+    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    return selectedDays.map((day) => weekdays[day]);
   }
 }

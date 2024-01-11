@@ -20,4 +20,14 @@ export class WorkoutPlanListComponent implements OnInit {
         error: (error) => console.error(error),
       });
   }
+
+  getWeekdays(weekdayString: string): string {
+    const weekdays = weekdayString.split(',').map(Number);
+
+    const weekdaysMap = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    const selectedWeekdays = weekdays.map((day) => weekdaysMap[day]);
+
+    return selectedWeekdays.join(', ');
+  }
 }
