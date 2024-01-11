@@ -19,6 +19,8 @@ import { WorkoutSetsListComponent } from './components/workout-sets/workout-sets
 import { WorkoutSetsDetailsComponent } from './components/workout-sets/workout-sets-details/workout-sets-details.component';
 import { WorkoutSetsCreateComponent } from './components/workout-sets/workout-sets-create/workout-sets-create.component';
 import { WorkoutSetsEditComponent } from './components/workout-sets/workout-sets-edit/workout-sets-edit.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,6 @@ import { WorkoutSetsEditComponent } from './components/workout-sets/workout-sets
     ExerciseComponent,
     AuthButtonComponent,
     HeaderComponent,
-    workout-components
     WorkoutPlanListComponent,
     WorkoutPlanDetailsComponent,
     WorkoutPlanCreateComponent,
@@ -40,6 +41,7 @@ import { WorkoutSetsEditComponent } from './components/workout-sets/workout-sets
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     AuthModule.forRoot({
       domain: environment.auth.domain,
       clientId: environment.auth.clientId,

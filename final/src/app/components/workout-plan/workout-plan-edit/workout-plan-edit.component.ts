@@ -10,8 +10,8 @@ import { WorkoutPlanService } from 'src/app/services/workout-plan.service';
 })
 export class WorkoutPlanEditComponent implements OnInit {
   workoutPlan: WorkoutPlan = {
-    workoutPlanId: 0,
-    userId: '',
+    workoutPlanId: 7,
+    userId: 'user123',
     workoutPlanName: '',
     weekDay: '',
     createdAt: new Date(),
@@ -25,7 +25,7 @@ export class WorkoutPlanEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const workoutPlanId = this.route.snapshot.params['id'];
+    const workoutPlanId = 7;
     this.getWorkoutPlan(workoutPlanId);
   }
 
@@ -33,6 +33,9 @@ export class WorkoutPlanEditComponent implements OnInit {
     this.workoutPlanService.getWorkoutPlanById(workoutPlanId).subscribe({
       next: (workoutPlan) => {
         this.workoutPlan = workoutPlan;
+
+        // Convert comma-separated string to array of selected days
+        this.selectedDays = this.workoutPlan.weekDay.split(',').map(Number);
       },
       error: (error) => {
         console.error(error);
@@ -41,6 +44,9 @@ export class WorkoutPlanEditComponent implements OnInit {
   }
 
   updateWorkoutPlan(): void {
+    // Convert selectedDays array to a comma-separated string
+    this.workoutPlan.weekDay = this.selectedDays.join(',');
+
     this.workoutPlanService
       .updateWorkoutPlan(this.workoutPlan.workoutPlanId, this.workoutPlan)
       .subscribe({
@@ -52,5 +58,19 @@ export class WorkoutPlanEditComponent implements OnInit {
           console.error('Error updating workout plan', error);
         },
       });
+  }
+
+  selectedDays: number[] = [];
+
+  isDaySelected(day: number): boolean {
+    return this.selectedDays.includes(day);
+  }
+
+  toggleDay(day: number): void {
+    if (this.isDaySelected(day)) {
+      this.selectedDays = this.selectedDays.filter((d) => d !== day);
+    } else {
+      this.selectedDays.push(day);
+    }
   }
 }
