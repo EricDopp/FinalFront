@@ -21,7 +21,6 @@ import { WorkoutSetsCreateComponent } from './components/workout-sets/workout-se
 import { WorkoutSetsEditComponent } from './components/workout-sets/workout-sets-edit/workout-sets-edit.component';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent,
