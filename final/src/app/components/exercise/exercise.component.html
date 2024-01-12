@@ -1,33 +1,37 @@
-<div>
-  <label for="searchCategory">Search Category:</label>
-  <select id="searchCategory" [(ngModel)]="selectedSearchCategory" (change)="onSearchCategoryChange()">
-    <option value="bodyPart">Body Part</option>
-    <option value="target">Target Muscle</option>
-    <option value="equipment">Equipment Used</option>
+<div style="background: linear-gradient(to right, black, orange); padding: 20px; border-radius: 8px; text-align: left;">
+  <h1 style="color: orange; font-size: 36px; margin-bottom: 20px;">FLEXCRAFT</h1>
+
+  <label for="searchCategory" style="color: orange; font-size: 18px;">Search Category:</label>
+  <select id="searchCategory" [(ngModel)]="selectedSearchCategory" (change)="onSearchCategoryChange()" style="background: linear-gradient(to right, black, #444); color: orange; border: 1px solid orange; font-size: 16px; width: 45%; margin-right: 10px;">
+    <option style="background: #444; color: orange;" value="bodyPart">Body Part</option>
+    <option style="background: #444; color: orange;" value="target">Target Muscle</option>
+    <option style="background: #444; color: orange;" value="equipment">Equipment Used</option>
   </select>
-</div>
 
-<div *ngIf="showCriteriaDropdown">
-  <label for="searchCriteria">Search Criteria:</label>
-  <select id="searchCriteria" [(ngModel)]="selectedSearchCriteria">
-    <option *ngFor="let criteria of searchCriteriaList" [value]="criteria">{{ criteria }}</option>
-  </select>
-</div>
+  <div *ngIf="showCriteriaDropdown" style="color: orange; font-size: 18px; width: 45%; margin-right: 10px;">
+    <label for="searchCriteria">Search Criteria:</label>
+    <select id="searchCriteria" [(ngModel)]="selectedSearchCriteria" style="background: linear-gradient(to right, black, #444); color: orange; border: 1px solid orange; font-size: 16px; width: 100%;">
+      <option style="background: #444; color: orange;" *ngFor="let criteria of searchCriteriaList" [value]="criteria">{{ criteria }}</option>
+    </select>
+  </div>
 
-<button (click)="search()">Search</button>
+  <button (click)="search()" style="background: linear-gradient(to right, black, #333); color: orange; border: 2px solid orange; border-radius: 5px; transition: box-shadow 0.3s, font-size 0.3s, width 0.3s, height 0.3s, color 0.3s;"
+    onmouseover="this.style.boxShadow='0 0 10px 5px orange'; this.style.fontSize='110%'; this.style.width='45%'; this.style.height='110%'; this.style.borderColor='black';"
+    onmouseout="this.style.boxShadow='none'; this.style.fontSize='100%'; this.style.width='45%'; this.style.height='100%'; this.style.borderColor='orange';">Search</button>
 
-<div *ngIf="filteredData.length > 0">
-  <h2>Filtered Exercises:</h2>
-  <div *ngFor="let exercise of filteredData">
-    <div>
-      <h3>{{ exercise.name }}</h3>
-      <p><strong>Body Part:</strong> {{ exercise.bodyPart }}</p>
-      <p><strong>Equipment:</strong> {{ exercise.equipment }}</p>
-      <p><strong>Secondary Muscles:</strong>
-        <span *ngFor="let muscle of exercise.secondaryMuscles; let last = last">
-          {{ muscle }}{{ !last ? ', ' : '' }}
-        </span>
-      </p>
+  <div *ngIf="filteredData.length > 0" style="color: orange; font-size: 18px; margin-top: 20px;">
+    <h2>Filtered Exercises:</h2>
+    <div *ngFor="let exercise of filteredData">
+      <div>
+        <h3>{{ exercise.name }}</h3>
+        <p><strong>Body Part:</strong> {{ exercise.bodyPart }}</p>
+        <p><strong>Equipment:</strong> {{ exercise.equipment }}</p>
+        <p><strong>Secondary Muscles:</strong>
+          <span *ngFor="let muscle of exercise.secondaryMuscles; let last = last">
+            {{ muscle }}{{ !last ? ', ' : '' }}
+          </span>
+        </p>
+      </div>
     </div>
   </div>
 </div>
