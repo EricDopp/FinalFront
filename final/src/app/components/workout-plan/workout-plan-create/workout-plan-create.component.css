@@ -1,0 +1,18 @@
+body {
+    background: linear-gradient(to right, black, orange);
+    color: orange;
+}
+
+.container {
+    background: transparent;
+}
+
+.btn-primary {
+    background-color: black;
+    color: orange;
+}
+
+.btn-primary:hover {
+    background-color: orange;
+    color: black;
+}

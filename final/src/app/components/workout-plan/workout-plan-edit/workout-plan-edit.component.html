@@ -1,54 +1,54 @@
-<div class="container mt-4">
-    <h2>Edit Workout Plan</h2>
-    <form (ngSubmit)="updateWorkoutPlan()" #workoutPlanForm="ngForm">
-  
-      <div class="mb-3">
-        <label for="workoutPlanName" class="form-label">Workout Plan Name</label>
-        <input type="text" class="form-control" id="workoutPlanName" [(ngModel)]="workoutPlan.workoutPlanName" name="workoutPlanName" required>
-      </div>
-  
-      <!-- Week Days (checkboxes) -->
-      <div class="mb-3">
-        <label class="form-label">Select Week Days</label>
-  
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="sunday" [checked]="isDaySelected(0)" (change)="toggleDay(0)">
-          <label class="form-check-label" for="sunday">Sunday</label>
-        </div>
-  
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="monday" [checked]="isDaySelected(1)" (change)="toggleDay(1)">
-          <label class="form-check-label" for="monday">Monday</label>
-        </div>
-  
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="tuesday" [checked]="isDaySelected(2)" (change)="toggleDay(2)">
-          <label class="form-check-label" for="tuesday">Tuesday</label>
-        </div>
-  
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="wednesday" [checked]="isDaySelected(3)" (change)="toggleDay(3)">
-          <label class="form-check-label" for="wednesday">Wednesday</label>
-        </div>
-  
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="thursday" [checked]="isDaySelected(4)" (change)="toggleDay(4)">
-          <label class="form-check-label" for="thursday">Thursday</label>
-        </div>
-  
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="friday" [checked]="isDaySelected(5)" (change)="toggleDay(5)">
-          <label class="form-check-label" for="friday">Friday</label>
-        </div>
-  
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="saturday" [checked]="isDaySelected(6)" (change)="toggleDay(6)">
-          <label class="form-check-label" for="saturday">Saturday</label>
-        </div>
-  
-      </div>
-  
-      <button type="submit" class="btn btn-primary">Update Workout Plan</button>
-    </form>
-  </div>
-  
+
+    <div class="container mt-4">
+        <h2>Edit Workout Plan</h2>
+        <form (ngSubmit)="updateWorkoutPlan()" #workoutPlanForm="ngForm">
+
+            <div class="mb-3">
+                <label for="workoutPlanName" class="form-label">Workout Plan Name</label>
+                <input type="text" class="form-control" id="workoutPlanName" [(ngModel)]="workoutPlan.workoutPlanName" name="workoutPlanName" required>
+            </div>
+
+            <!-- Week Days (checkboxes) -->
+            <div class="mb-3">
+                <label class="form-label">Select Week Days</label>
+
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="sunday" [checked]="isDaySelected(0)" (change)="toggleDay(0)">
+                <label class="form-check-label" for="sunday">Sunday</label>
+                </div>
+
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="monday" [checked]="isDaySelected(1)" (change)="toggleDay(1)">
+                <label class="form-check-label" for="monday">Monday</label>
+                </div>
+
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="tuesday" [checked]="isDaySelected(2)" (change)="toggleDay(2)">
+                <label class="form-check-label" for="tuesday">Tuesday</label>
+                </div>
+
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="wednesday" [checked]="isDaySelected(3)" (change)="toggleDay(3)">
+                <label class="form-check-label" for="wednesday">Wednesday</label>
+                </div>
+
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="thursday" [checked]="isDaySelected(4)" (change)="toggleDay(4)">
+                <label class="form-check-label" for="thursday">Thursday</label>
+                </div>
+
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="friday" [checked]="isDaySelected(5)" (change)="toggleDay(5)">
+                <label class="form-check-label" for="friday">Friday</label>
+                </div>
+
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="saturday" [checked]="isDaySelected(6)" (change)="toggleDay(6)">
+                <label class="form-check-label" for="saturday">Saturday</label>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Workout Plan</button>
+        </form>
+    </div>

@@ -1,33 +1,35 @@
-<div class="container mt-4">
-    <h2>Create Workout Set</h2>
-    <form (ngSubmit)="createWorkoutSet()" #workoutSetForm="ngForm">
+<div class="container mt-4" style="background: linear-gradient(to right, black, orange); color: orange;">
+    <h2 style="color: orange;">Create Workout Set</h2>
+    <form (ngSubmit)="createWorkoutSet()" #workoutSetForm="ngForm" style="background: linear-gradient(to right, black, orange); padding: 20px; border-radius: 8px;">
   
       <div class="mb-3">
-        <label for="repCount" class="form-label">Rep Count</label>
-        <input type="number" class="form-control" id="repCount" [(ngModel)]="workoutSets.repCount" name="repCount" required>
+        <label for="repCount" class="form-label" style="color: orange;">Rep Count</label>
+        <input type="number" class="form-control" id="repCount" [(ngModel)]="workoutSets.repCount" name="repCount" required style="background-color: #333; color: orange; border: 1px solid orange;">
       </div>
   
       <div class="mb-3">
-        <label for="weight" class="form-label">Weight</label>
-        <input type="number" class="form-control" id="weight" [(ngModel)]="workoutSets.weight" name="weight" required>
+        <label for="weight" class="form-label" style="color: orange;">Weight</label>
+        <input type="number" class="form-control" id="weight" [(ngModel)]="workoutSets.weight" name="weight" required style="background-color: #333; color: orange; border: 1px solid orange;">
       </div>
   
       <div class="mb-3">
-        <label for="weightUnit" class="form-label">Weight Unit</label>
-        <input type="text" class="form-control" id="weightUnit" [(ngModel)]="workoutSets.weightUnit" name="weightUnit" required>
+        <label for="weightUnit" class="form-label" style="color: orange;">Weight Unit</label>
+        <input type="text" class="form-control" id="weightUnit" [(ngModel)]="workoutSets.weightUnit" name="weightUnit" required style="background-color: #333; color: orange; border: 1px solid orange;">
       </div>
   
       <div class="mb-3">
-        <label for="setCount" class="form-label">Workout Set Count</label>
-        <input type="number" class="form-control" id="setCount" [(ngModel)]="workoutSets.workoutSetCount" name="setCount" required>
+        <label for="setCount" class="form-label" style="color: orange;">Workout Set Count</label>
+        <input type="number" class="form-control" id="setCount" [(ngModel)]="workoutSets.workoutSetCount" name="setCount" required style="background-color: #333; color: orange; border: 1px solid orange;">
       </div>
   
       <div class="mb-3">
-        <label for="sortOrder" class="form-label">Sort Order</label>
-        <input type="number" class="form-control" id="sortOrder" [(ngModel)]="workoutSets.sortOrder" name="sortOrder" required>
+        <label for="sortOrder" class="form-label" style="color: orange;">Sort Order</label>
+        <input type="number" class="form-control" id="sortOrder" [(ngModel)]="workoutSets.sortOrder" name="sortOrder" required style="background-color: #333; color: orange; border: 1px solid orange;">
       </div>
   
-      <button type="submit" class="btn btn-primary">Create Workout Set</button>
+      <button type="submit" class="btn btn-primary" style="background: linear-gradient(to right, #333, #000, #000); color: orange; border: 2px solid orange; transition: box-shadow 0.3s, text-shadow 0.3s, font-size 0.3s, border-color 0.3s;"
+   onmouseover="this.style.boxShadow='0 0 20px 10px orange'; this.style.textShadow='0 0 30px orange'; this.style.fontSize='110%'; this.style.borderColor='orange';"
+   onmouseout="this.style.boxShadow='none'; this.style.textShadow='none'; this.style.fontSize='100%'; this.style.borderColor='orange';">Create Workout Set</button>
     </form>
   </div>
   

@@ -1,28 +1,40 @@
-<div class="container mt-4">
-    <h2>Workout Set Details</h2>
-  
-    <div class="card">
-      <div class="card-body">
-  
-        <div class="mb-3">
-          <label for="exerciseId" class="form-label">Exercise ID</label>
-          <input type="text" class="form-control" id="exerciseId" value="{{ workoutSet.exerciseDBId }}" readonly>
-        </div>
-  
-        <div class="mb-3">
-          <label for="repCount" class="form-label">Rep Count</label>
-          <input type="text" class="form-control" id="repCount" value="{{ workoutSet.repCount }}" readonly>
-        </div>
-  
-        <div class="mb-3">
-          <label for="weight" class="form-label">Weight</label>
-          <input type="text" class="form-control" id="weight" value="{{ workoutSet.weight }} {{ workoutSet.weightUnit }}" readonly>
-        </div>
-  
-        <div class="mb-3">
-          <label for="setCount" class="form-label">Workout Set Count</label>
-          <input type="text" class="form-control" id="setCount" value="{{ workoutSet.workoutSetCount }}" readonly>
-        </div>  
+<div class="container mt-4" style="background: linear-gradient(to right, black, orange); color: orange; padding: 20px; border-radius: 8px;">
+  <h2>Workout Set Details</h2>
+
+  <div class="card" style="background: linear-gradient(to right, black, orange); color: orange;">
+    <div class="card-body">
+
+      <div class="mb-3">
+        <label for="exerciseId" class="form-label" style="color: orange;">Exercise ID</label>
+        <input type="text" class="form-control" id="exerciseId" value="{{ workoutSet.exerciseDBId }}" readonly 
+               style="background: #333; color: orange; border: 1px solid orange;" 
+               onfocus="this.style.borderColor='orange';" 
+               onblur="this.style.borderColor='orange';">
       </div>
+
+      <div class="mb-3">
+        <label for="repCount" class="form-label" style="color: orange;">Rep Count</label>
+        <input type="text" class="form-control" id="repCount" value="{{ workoutSet.repCount }}" readonly 
+               style="background: #333; color: orange; border: 1px solid orange;" 
+               onfocus="this.style.borderColor='orange';" 
+               onblur="this.style.borderColor='orange';">
+      </div>
+
+      <div class="mb-3">
+        <label for="weight" class="form-label" style="color: orange;">Weight</label>
+        <input type="text" class="form-control" id="weight" value="{{ workoutSet.weight }} {{ workoutSet.weightUnit }}" readonly 
+               style="background: #333; color: orange; border: 1px solid orange;" 
+               onfocus="this.style.borderColor='orange';" 
+               onblur="this.style.borderColor='orange';">
+      </div>
+
+      <div class="mb-3">
+        <label for="setCount" class="form-label" style="color: orange;">Workout Set Count</label>
+        <input type="text" class="form-control" id="setCount" value="{{ workoutSet.workoutSetCount }}" readonly 
+               style="background: #333; color: orange; border: 1px solid orange;" 
+               onfocus="this.style.borderColor='orange';" 
+               onblur="this.style.borderColor='orange';">
+      </div>  
     </div>
-  </div>  
+  </div>
+</div>
