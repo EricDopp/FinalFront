@@ -1,33 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Plan Details</title>
-    <style>
-        body {
-            background: linear-gradient(to right, black, orange);
-            color: orange;
-        }
-
-        .container {
-            background: transparent; /* Set the container background to transparent to see the gradient background */
-        }
-
-        .btn-primary {
-            background-color: black;
-            color: orange;
-        }
-
-        .btn-primary:hover {
-            background-color: orange;
-            color: black;
-        }
-    </style>
-</head>
-
-<body>
     <div class="container mt-4">
         <h2>Workout Plan Details</h2>
 
@@ -40,6 +10,3 @@
             <p><strong>Updated At:</strong> {{ workoutPlan.updatedAt | date: 'medium' }}</p>
         </div>
     </div>
-</body>
-
-</html>
