@@ -1,8 +1,33 @@
 <div>
-  <h2>Body Part List</h2>
-  <ul>
-    <li *ngFor="let bodyPart of bodyPartList">
-      {{ bodyPart }}
-    </li>
-  </ul>
+  <label for="searchCategory">Search Category:</label>
+  <select id="searchCategory" [(ngModel)]="selectedSearchCategory" (change)="onSearchCategoryChange()">
+    <option value="bodyPart">Body Part</option>
+    <option value="target">Target Muscle</option>
+    <option value="equipment">Equipment Used</option>
+  </select>
+</div>
+
+<div *ngIf="showCriteriaDropdown">
+  <label for="searchCriteria">Search Criteria:</label>
+  <select id="searchCriteria" [(ngModel)]="selectedSearchCriteria">
+    <option *ngFor="let criteria of searchCriteriaList" [value]="criteria">{{ criteria }}</option>
+  </select>
+</div>
+
+<button (click)="search()">Search</button>
+
+<div *ngIf="filteredData.length > 0">
+  <h2>Filtered Exercises:</h2>
+  <div *ngFor="let exercise of filteredData">
+    <div>
+      <h3>{{ exercise.name }}</h3>
+      <p><strong>Body Part:</strong> {{ exercise.bodyPart }}</p>
+      <p><strong>Equipment:</strong> {{ exercise.equipment }}</p>
+      <p><strong>Secondary Muscles:</strong>
+        <span *ngFor="let muscle of exercise.secondaryMuscles; let last = last">
+          {{ muscle }}{{ !last ? ', ' : '' }}
+        </span>
+      </p>
+    </div>
+  </div>
 </div>
