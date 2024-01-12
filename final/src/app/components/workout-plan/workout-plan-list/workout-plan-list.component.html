@@ -1,28 +1,62 @@
-<div class="container mt-4">
-    <h2>Workout Plans List</h2>
-  
-    <div *ngIf="workoutPlans.length > 0 else noWorkoutPlans">
-      <ul class="list-group">
-        <li *ngFor="let workoutPlan of workoutPlans" class="list-group-item">
-          <div class="row">
-            <div class="col">
-              <strong>Workout Plan Name:</strong> {{ workoutPlan.workoutPlanName }}
-            </div>
-            <div class="col">
-              <strong>Selected Weekdays:</strong> {{ getWeekdays(workoutPlan.weekDay) }}
-            </div>
-            <div class="col">
-              <strong>Created At:</strong> {{ workoutPlan.createdAt | date }}
-            </div>
-            <div class="col">
-              <strong>Updated At:</strong> {{ workoutPlan.updatedAt | date }}
-            </div>
-          </div>
-        </li>
-      </ul>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Plans List</title>
+    <style>
+        body {
+            background: linear-gradient(to right, black, orange);
+            color: orange;
+        }
+
+        .container {
+            background: transparent; /* Set the container background to transparent to see the gradient background */
+        }
+
+        .btn-primary {
+            background-color: black;
+            color: orange;
+        }
+
+        .btn-primary:hover {
+            background-color: orange;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h2>Workout Plans List</h2>
+
+        <div *ngIf="workoutPlans.length > 0 else noWorkoutPlans">
+            <ul class="list-group">
+                <li *ngFor="let workoutPlan of workoutPlans" class="list-group-item">
+                    <div class="row">
+                        <div class="col">
+                            <strong>Workout Plan Name:</strong> {{ workoutPlan.workoutPlanName }}
+                        </div>
+                        <div class="col">
+                            <strong>Selected Weekdays:</strong> {{ getWeekdays(workoutPlan.weekDay) }}
+                        </div>
+                        <div class="col">
+                            <strong>Created At:</strong> {{ workoutPlan.createdAt | date }}
+                        </div>
+                        <div class="col">
+                            <strong>Updated At:</strong> {{ workoutPlan.updatedAt | date }}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <ng-template #noWorkoutPlans>
+            <p>No workout plans available for this user.</p>
+        </ng-template>
     </div>
-  
-    <ng-template #noWorkoutPlans>
-      <p>No workout plans available for this user.</p>
-    </ng-template>
-</div>
+</body>
+
+</html>
+
