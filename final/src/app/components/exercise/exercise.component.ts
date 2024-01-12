@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, forkJoin, map, switchMap } from 'rxjs';
 import { BaseExerciseResponse } from 'src/app/models/exercise-response';
 import { ExerciseService } from 'src/app/services/exercise.service';
+import { WorkoutSetsService } from 'src/app/services/workout-sets.service';
 
 @Component({
   selector: 'app-exercise',
@@ -82,7 +84,11 @@ export class ExerciseComponent implements OnInit {
   selectedTarget: string = '';
   selectedEquipment: string = '';
 
-  constructor(private ExerciseService: ExerciseService) {}
+  constructor(
+    private ExerciseService: ExerciseService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.selectedSearchCriteria = 'bodyPart';
@@ -127,7 +133,9 @@ export class ExerciseComponent implements OnInit {
         ).subscribe(
           (data) => {
             console.log('API call successful for body part:', data);
-            this.filteredData = Array.isArray(data) ? data : [data] as BaseExerciseResponse[];
+            this.filteredData = Array.isArray(data)
+              ? data
+              : ([data] as BaseExerciseResponse[]);
           },
           (error) => {
             console.error('Error fetching data based on body part:', error);
@@ -140,7 +148,9 @@ export class ExerciseComponent implements OnInit {
         ).subscribe(
           (data) => {
             console.log('API call successful for target muscle:', data);
-            this.filteredData = Array.isArray(data) ? data : [data] as BaseExerciseResponse[];
+            this.filteredData = Array.isArray(data)
+              ? data
+              : ([data] as BaseExerciseResponse[]);
           },
           (error) => {
             console.error('Error fetching data based on target muscle:', error);
@@ -153,7 +163,9 @@ export class ExerciseComponent implements OnInit {
         ).subscribe(
           (data) => {
             console.log('API call successful for equipment used:', data);
-            this.filteredData = Array.isArray(data) ? data : [data] as BaseExerciseResponse[];
+            this.filteredData = Array.isArray(data)
+              ? data
+              : ([data] as BaseExerciseResponse[]);
           },
           (error) => {
             console.error(

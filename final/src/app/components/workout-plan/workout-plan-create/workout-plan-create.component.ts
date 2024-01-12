@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorkoutPlan } from 'src/app/models/workout-plan';
 import { WorkoutPlanService } from 'src/app/services/workout-plan.service';
 
@@ -20,6 +20,7 @@ export class WorkoutPlanCreateComponent {
 
   constructor(
     private workoutPlanService: WorkoutPlanService,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
 

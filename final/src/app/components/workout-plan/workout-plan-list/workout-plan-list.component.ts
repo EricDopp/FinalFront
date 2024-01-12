@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkoutPlanService } from 'src/app/services/workout-plan.service';
 import { WorkoutPlan } from 'src/app/models/workout-plan';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-workout-plan-list',
@@ -10,7 +11,11 @@ import { WorkoutPlan } from 'src/app/models/workout-plan';
 export class WorkoutPlanListComponent implements OnInit {
   workoutPlans: WorkoutPlan[] = [];
 
-  constructor(private workoutPlanService: WorkoutPlanService) {}
+  constructor(
+    private workoutPlanService: WorkoutPlanService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.workoutPlanService

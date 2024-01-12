@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorkoutSetsService } from 'src/app/services/workout-sets.service';
 import { WorkoutSets } from 'src/app/models/workout-sets';
 
@@ -23,8 +23,9 @@ export class WorkoutSetsDetailsComponent implements OnInit {
   };
 
   constructor(
+    private workoutSetsService: WorkoutSetsService,
     private route: ActivatedRoute,
-    private workoutSetsService: WorkoutSetsService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
