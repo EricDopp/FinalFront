@@ -11,7 +11,7 @@ import { WorkoutPlanService } from 'src/app/services/workout-plan.service';
 export class WorkoutPlanCreateComponent {
   workoutPlan: WorkoutPlan = {
     workoutPlanId: 0,
-    userId: '',
+    userId: 'user123',
     workoutPlanName: '',
     weekDay: '',
     createdAt: new Date(),
@@ -24,6 +24,9 @@ export class WorkoutPlanCreateComponent {
   ) {}
 
   createWorkoutPlan(): void {
+    // Convert selectedDays array to a comma-separated string
+    this.workoutPlan.weekDay = this.selectedDays.join(',');
+
     this.workoutPlanService.createWorkoutPlan(this.workoutPlan).subscribe({
       next: (createdWorkoutPlan) => {
         console.log('Workout Plan created successfully', createdWorkoutPlan);
@@ -33,5 +36,19 @@ export class WorkoutPlanCreateComponent {
         console.error('Error creating workout plan', error);
       },
     });
+  }
+
+  selectedDays: number[] = [];
+
+  isDaySelected(day: number): boolean {
+    return this.selectedDays.includes(day);
+  }
+
+  toggleDay(day: number): void {
+    if (this.isDaySelected(day)) {
+      this.selectedDays = this.selectedDays.filter((d) => d !== day);
+    } else {
+      this.selectedDays.push(day);
+    }
   }
 }

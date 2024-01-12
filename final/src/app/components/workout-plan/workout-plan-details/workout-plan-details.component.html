@@ -1,1 +1,13 @@
-<p>workout-plan-details works!</p>
+<div class="container mt-4">
+    <h2>Workout Plan Details</h2>
+  
+    <div>
+      <p><strong>Workout Plan Name:</strong> {{ workoutPlan.workoutPlanName }}</p>
+      <p><strong>Selected Weekdays: </strong>
+        <span *ngFor="let day of getWeekdays(); let last = last">{{ day }}{{ !last ? ', ' : '' }}</span>
+      </p>
+      <p><strong>Created At:</strong> {{ workoutPlan.createdAt | date: 'medium' }}</p>
+      <p><strong>Updated At:</strong> {{ workoutPlan.updatedAt | date: 'medium' }}</p>
+    </div>
+  </div>
+  
