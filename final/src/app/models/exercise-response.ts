@@ -8,9 +8,3 @@ export interface BaseExerciseResponse {
   secondaryMuscles: string[];
   instructions: string[];
 }
-
-export interface ExerciseResponse extends BaseExerciseResponse {}
-
-export interface ListResponse extends BaseExerciseResponse {
-  list: string[];
-}
