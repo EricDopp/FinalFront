@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { WorkoutSetsService } from 'src/app/services/workout-sets.service';
 import { WorkoutSets } from 'src/app/models/workout-sets';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-workout-sets-list',
@@ -11,7 +12,11 @@ export class WorkoutSetsListComponent implements OnInit {
   @Input() workoutPlanId!: number; // FIXME: Add data binding where you embed the component. i.e. : <app-workout-sets-list [workoutPlanId]="currentWorkoutPlan.workoutPlanId"></app-workout-sets-list> or other solution
   workoutSets: WorkoutSets[] = [];
 
-  constructor(private workoutSetsService: WorkoutSetsService) {}
+  constructor(
+    private workoutSetsService: WorkoutSetsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.fetchWorkoutSets();

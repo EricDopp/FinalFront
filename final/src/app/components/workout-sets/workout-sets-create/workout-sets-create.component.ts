@@ -1,6 +1,6 @@
 // workout-sets-create.component.ts
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorkoutSetsService } from 'src/app/services/workout-sets.service';
 import { WorkoutSets } from 'src/app/models/workout-sets';
 
@@ -24,6 +24,7 @@ export class WorkoutSetsCreateComponent {
 
   constructor(
     private workoutSetsService: WorkoutSetsService,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
 
