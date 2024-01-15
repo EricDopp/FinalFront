@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, forkJoin, map, switchMap } from 'rxjs';
 import { BaseExerciseResponse } from 'src/app/models/exercise-response';
+import { WorkoutSets } from 'src/app/models/workout-sets';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { WorkoutSetsService } from 'src/app/services/workout-sets.service';
 
@@ -83,6 +84,7 @@ export class ExerciseComponent implements OnInit {
   selectedBodyPart: string = '';
   selectedTarget: string = '';
   selectedEquipment: string = '';
+  workoutSetsService: any;
 
   constructor(
     private ExerciseService: ExerciseService,
@@ -179,5 +181,29 @@ export class ExerciseComponent implements OnInit {
         console.error('Invalid search category.');
         break;
     }
+  }
+
+  addExerciseToWorkoutSet(exercise: BaseExerciseResponse): void{
+    const newWorkoutSet: WorkoutSets = {
+      workoutSetId: 0,
+      workoutPlanId: 6, // Adjust the workout plan ID as needed
+      userId: 'user123',
+      exerciseDBId: exercise.id,
+      repCount: 0,
+      weight: 0,
+      weightUnit: '',
+      workoutSetCount: 0,
+      sortOrder: 0,
+    };
+
+    this.workoutSetsService.createWorkoutSets(newWorkoutSet).subscribe({
+      next: (createdWorkoutSet: WorkoutSets) => {
+        console.log('Exercise added to workout set:', createdWorkoutSet);
+        // You can optionally update the UI to reflect the addition
+      },
+      error: (error: any) => {
+        console.error('Error adding exercise to workout set:', error);
+      },
+    });
   }
 }

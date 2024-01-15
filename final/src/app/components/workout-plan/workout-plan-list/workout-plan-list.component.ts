@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class WorkoutPlanListComponent implements OnInit {
   workoutPlans: WorkoutPlan[] = [];
+  selectedWorkoutPlan: WorkoutPlan | undefined;
 
   constructor(
     private workoutPlanService: WorkoutPlanService,
@@ -24,6 +25,14 @@ export class WorkoutPlanListComponent implements OnInit {
         next: (plans) => (this.workoutPlans = plans),
         error: (error) => console.error(error),
       });
+  }
+
+  navigateToWorkoutSets(workoutPlanId: number): void {
+    this.router.navigate(['/sets'], { queryParams: { workoutPlanId: workoutPlanId } });
+  }
+
+  showDetails(workoutPlan: WorkoutPlan): void {
+    this.selectedWorkoutPlan = this.selectedWorkoutPlan === workoutPlan ? undefined : workoutPlan;
   }
 
   getWeekdays(weekdayString: string): string {
