@@ -31,7 +31,7 @@ export class WorkoutPlanCreateComponent {
     this.workoutPlanService.createWorkoutPlan(this.workoutPlan).subscribe({
       next: (createdWorkoutPlan) => {
         console.log('Workout Plan created successfully', createdWorkoutPlan);
-        this.router.navigate(['/workout-plans']);
+        this.router.navigate(['/plans']);
       },
       error: (error) => {
         console.error('Error creating workout plan', error);

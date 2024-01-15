@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WorkoutPlan } from 'src/app/models/workout-plan';
 import { WorkoutPlanService } from 'src/app/services/workout-plan.service';
@@ -9,14 +9,14 @@ import { WorkoutPlanService } from 'src/app/services/workout-plan.service';
   styleUrls: ['./workout-plan-details.component.css'],
 })
 export class WorkoutPlanDetailsComponent implements OnInit {
-  workoutPlan: WorkoutPlan = {
-    workoutPlanId: 7,
+  @Input() workoutPlan: WorkoutPlan = {
+    workoutPlanId: NaN, 
     userId: 'user123',
     workoutPlanName: '',
     weekDay: '',
     createdAt: new Date(),
     updatedAt: new Date(),
-  };
+  };/*This isn't passing to the SQL table and throws a ton of errors in the terminal, look into later */
 
   constructor(
     private workoutPlanService: WorkoutPlanService,
@@ -25,8 +25,15 @@ export class WorkoutPlanDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const workoutPlanId = 7;
+    const workoutPlanId = 1;
     this.getWorkoutPlan(workoutPlanId);
+  }
+
+  navigateToWorkoutSets(): void {
+    if (this.workoutPlan) {
+      const workoutPlanId = this.workoutPlan.workoutPlanId;
+      this.router.navigate(['/sets'], {queryParams: {workoutPlanId: this.workoutPlan.workoutPlanId}});
+    }
   }
 
   getWorkoutPlan(workoutPlanId: number): void {

@@ -17,6 +17,9 @@
                         <div class="col">
                             <strong>Updated At:</strong> {{ workoutPlan.updatedAt | date }}
                         </div>
+                        <button (click)="showDetails(workoutPlan)">Show Details</button>
+                        <button (click)="navigateToWorkoutSets(workoutPlan.workoutPlanId)">View Workout Sets</button>
+                        <app-workout-plan-details *ngIf="selectedWorkoutPlan === workoutPlan" [workoutPlan]="workoutPlan"></app-workout-plan-details>
                     </div>
                 </li>
             </ul>
