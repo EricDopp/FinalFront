@@ -1,7 +1,8 @@
     <div class="container mt-4">
-        <h2>Workout Plans List</h2>
+        <h2 style="color: orange; font-size: 18px; margin-top: 20px;">Workout Plans List</h2>
 
-        <div *ngIf="workoutPlans.length > 0 else noWorkoutPlans">
+        <div *ngIf="(workoutPlans$ | async) as workoutPlans; else noWorkoutPlans">
+            <div *ngIf="workoutPlans.length > 0">
             <ul class="list-group">
                 <li *ngFor="let workoutPlan of workoutPlans" class="list-group-item">
                     <div class="row">
@@ -17,15 +18,27 @@
                         <div class="col">
                             <strong>Updated At:</strong> {{ workoutPlan.updatedAt | date }}
                         </div>
-                        <button (click)="showDetails(workoutPlan)">Show Details</button>
-                        <button (click)="navigateToWorkoutSets(workoutPlan.workoutPlanId)">View Workout Sets</button>
+                        <div class="col">
+                            <button (click)="editWorkoutPlan(workoutPlan.workoutPlanId)" class="btn btn-primary">Edit</button>
+                        </div>
+                        <div class="col">
+                            <button (click)="showDetails(workoutPlan)" class="btn btn-primary">Show Details</button>
+                        </div>
+                        <div class="col">
+                            <button (click)="navigateToWorkoutSets(workoutPlan.workoutPlanId)" class="btn btn-primary">View Workout Sets</button>
+                        </div>
+                        <div class="col">
+                            <button (click)="deleteWorkoutPlan(workoutPlan.workoutPlanId)" class="btn btn-primary">Delete</button>
+                        </div>
                         <app-workout-plan-details *ngIf="selectedWorkoutPlan === workoutPlan" [workoutPlan]="workoutPlan"></app-workout-plan-details>
                     </div>
                 </li>
             </ul>
         </div>
+        
 
         <ng-template #noWorkoutPlans>
             <p>No workout plans available for this user.</p>
         </ng-template>
+        <app-workout-plan-create></app-workout-plan-create>
     </div>
