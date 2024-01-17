@@ -48,7 +48,24 @@
                 </div>
 
             </div>
+            <button type="submit" class="btn btn-primary" 
+            onmouseover="updateButtonStyle(this, true)" 
+            onmouseout="updateButtonStyle(this, false)">
+            Update Workout Plan
+          </button>
+          
+          <script>
+            function updateButtonStyle(button, isMouseOver) {
+              if (isMouseOver) {
+                button.style.fontSize = '18px';
+                button.style.fontWeight = 'bold';
+              } else {
+                button.style.fontSize = '16px';
+                button.style.fontWeight = 'normal';
+              }
+            }
+          </script>
+          
 
-            <button type="submit" class="btn btn-primary">Update Workout Plan</button>
         </form>
     </div>
