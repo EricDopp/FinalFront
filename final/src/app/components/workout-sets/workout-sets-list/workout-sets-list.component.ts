@@ -53,4 +53,12 @@ export class WorkoutSetsListComponent implements OnInit {
       });
     }
   }
+
+  navigateToExercises(): void {
+    if (this.workoutPlanId) {
+      this.router.navigate(['/exercises'], { queryParams: { workoutPlanId: this.workoutPlanId } });
+    } else {
+      console.error('workoutPlanId is undefined. Cannot navigate to exercises.');
+    }
+  }
 }

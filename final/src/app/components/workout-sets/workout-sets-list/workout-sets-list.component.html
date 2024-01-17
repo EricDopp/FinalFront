@@ -6,7 +6,7 @@
       <li *ngFor="let workoutSet of workoutSets" class="list-group-item">
         <div class="d-flex justify-content-between">
           <div class="col">
-            <strong>Exercise ID:</strong> {{ workoutSet.exerciseDBId }}
+            <strong>Exercise Name:</strong> {{ workoutSet.exerciseName }}
           </div>
           <div class="col">
             <strong>Rep Count:</strong> {{ workoutSet.repCount }}
@@ -23,6 +23,8 @@
         </div>
       </li>
     </ul>
+    <!-- Button outside the loop -->
+    <button (click)="navigateToExercises()" class="btn btn-primary">Add Exercise</button>
   </div>
 
   <ng-template #noWorkoutSets>

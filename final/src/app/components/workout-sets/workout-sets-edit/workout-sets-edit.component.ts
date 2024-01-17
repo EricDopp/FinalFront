@@ -12,10 +12,11 @@ import { WorkoutSets } from 'src/app/models/workout-sets';
 export class WorkoutSetsEditComponent implements OnInit {
   workoutSetId: number = 0;
   workoutSets: WorkoutSets = {
-    workoutSetId: 12,
-    workoutPlanId: 6,
+    workoutSetId: 0,
+    workoutPlanId: 0,
     userId: 'user123',
-    exerciseDBId: 'exercise123',
+    exerciseDBId: '',
+    exerciseName: '',
     repCount: 0,
     weight: 0,
     weightUnit: '',
