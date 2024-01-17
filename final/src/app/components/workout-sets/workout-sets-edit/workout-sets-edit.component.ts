@@ -31,15 +31,17 @@ export class WorkoutSetsEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.workoutSetId = 12;
+    this.route.params.subscribe((params) => {
+      this.workoutSetId = +params['id'];
 
-    this.workoutSetsService.getWorkoutSetsById(this.workoutSetId).subscribe({
-      next: (data: WorkoutSets) => {
-        this.workoutSets = data;
-      },
-      error: (error: any) => {
-        console.error('Error fetching workout set details:', error);
-      },
+      this.workoutSetsService.getWorkoutSetsById(this.workoutSetId).subscribe({
+        next: (data: WorkoutSets) => {
+          this.workoutSets = data;
+        },
+        error: (error: any) => {
+          console.error('Error fetching workout set details:', error);
+        },
+      });
     });
   }
 
@@ -49,6 +51,13 @@ export class WorkoutSetsEditComponent implements OnInit {
       .subscribe({
         next: (updatedWorkoutSet: WorkoutSets) => {
           console.log('Workout set updated successfully:', updatedWorkoutSet);
+
+          // Navigate back to workoutSetsList with workoutPlanId from the updated workout set
+          this.router.navigate(['/sets'], { 
+            queryParams: { 
+              workoutPlanId: updatedWorkoutSet.workoutPlanId, 
+            } 
+          });
         },
         error: (error: any) => {
           console.error('Error updating workout set:', error);

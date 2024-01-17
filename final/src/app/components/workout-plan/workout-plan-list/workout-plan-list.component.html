@@ -19,7 +19,7 @@
                             <strong>Updated At:</strong> {{ workoutPlan.updatedAt | date }}
                         </div>
                         <div class="col">
-                            <button (click)="editWorkoutPlan(workoutPlan.workoutPlanId)" class="btn btn-primary">Edit</button>
+                            <button (click)="editWorkoutPlan(workoutPlan.workoutPlanId)" class="btn btn-warning">Edit</button>
                         </div>
                         <div class="col">
                             <button (click)="showDetails(workoutPlan)" class="btn btn-primary">Show Details</button>
@@ -28,7 +28,7 @@
                             <button (click)="navigateToWorkoutSets(workoutPlan.workoutPlanId)" class="btn btn-primary">View Workout Sets</button>
                         </div>
                         <div class="col">
-                            <button (click)="deleteWorkoutPlan(workoutPlan.workoutPlanId)" class="btn btn-primary">Delete</button>
+                            <button (click)="deleteWorkoutPlan(workoutPlan.workoutPlanId)" class="btn btn-danger">Delete</button>
                         </div>
                         <app-workout-plan-details *ngIf="selectedWorkoutPlan === workoutPlan" [workoutPlan]="workoutPlan"></app-workout-plan-details>
                     </div>
