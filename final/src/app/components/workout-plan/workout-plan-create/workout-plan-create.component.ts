@@ -32,10 +32,12 @@ export class WorkoutPlanCreateComponent {
       next: (createdWorkoutPlan) => {
         console.log('Workout Plan created successfully', createdWorkoutPlan);
         this.router.navigate(['/plans']);
+        
       },
       error: (error) => {
         console.error('Error creating workout plan', error);
       },
+      
     });
   }
 
@@ -53,3 +55,4 @@ export class WorkoutPlanCreateComponent {
     }
   }
 }
+
