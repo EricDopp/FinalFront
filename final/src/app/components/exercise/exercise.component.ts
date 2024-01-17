@@ -180,6 +180,8 @@ export class ExerciseComponent implements OnInit {
       default:
         console.error('Invalid search category.');
         break;
+
+        
     }
   }
 
