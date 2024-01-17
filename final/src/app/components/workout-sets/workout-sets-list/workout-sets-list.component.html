@@ -1,7 +1,10 @@
-<div class="container mt-4" style="background: linear-gradient(to right, black, orange); color: orange;">
+<div
+  class="container mt-4"
+  style="background: linear-gradient(to right, black, orange); color: orange"
+>
   <h2>Workout Sets List</h2>
 
-  <div *ngIf="workoutSets.length > 0 else noWorkoutSets">
+  <div *ngIf="workoutSets.length > 0; else noWorkoutSets">
     <ul class="list-group">
       <li *ngFor="let workoutSet of workoutSets" class="list-group-item">
         <div class="d-flex justify-content-between">
@@ -12,7 +15,8 @@
             <strong>Rep Count:</strong> {{ workoutSet.repCount }}
           </div>
           <div class="col">
-            <strong>Weight:</strong> {{ workoutSet.weight }} {{ workoutSet.weightUnit }}
+            <strong>Weight:</strong> {{ workoutSet.weight }}
+            {{ workoutSet.weightUnit }}
           </div>
           <div class="col">
             <strong>Set Count:</strong> {{ workoutSet.workoutSetCount }}
@@ -23,11 +27,15 @@
         </div>
       </li>
     </ul>
-    <!-- Button outside the loop -->
-    <button (click)="navigateToExercises()" class="btn btn-primary">Add Exercise</button>
+    <button (click)="navigateToExercises()" class="btn btn-primary">
+      Add Exercise
+    </button>
   </div>
 
   <ng-template #noWorkoutSets>
     <p>No workout sets available for this workout plan.</p>
+    <button (click)="navigateToExercises()" class="btn btn-primary">
+      Add Exercise
+    </button>
   </ng-template>
 </div>
