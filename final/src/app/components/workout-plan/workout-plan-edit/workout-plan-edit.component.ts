@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { WorkoutPlan } from 'src/app/models/workout-plan';
 import { WorkoutPlanService } from 'src/app/services/workout-plan.service';
 
@@ -10,13 +11,15 @@ import { WorkoutPlanService } from 'src/app/services/workout-plan.service';
 })
 export class WorkoutPlanEditComponent implements OnInit {
   workoutPlan: WorkoutPlan = {
-    workoutPlanId: 7,
+    workoutPlanId: 0,
     userId: 'user123',
     workoutPlanName: '',
     weekDay: '',
     createdAt: new Date(),
     updatedAt: new Date(),
   };
+
+  private destroy$ = new Subject<void>();
 
   constructor(
     private workoutPlanService: WorkoutPlanService,
@@ -25,8 +28,15 @@ export class WorkoutPlanEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const workoutPlanId = 7;
-    this.getWorkoutPlan(workoutPlanId);
+    this.route.params.subscribe(params => {
+      const workoutPlanId = +params['id']; // Use the correct parameter name from your route
+      this.getWorkoutPlan(workoutPlanId);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   getWorkoutPlan(workoutPlanId: number): void {
@@ -52,7 +62,7 @@ export class WorkoutPlanEditComponent implements OnInit {
       .subscribe({
         next: (updatedWorkoutPlan) => {
           console.log('Workout Plan updated successfully', updatedWorkoutPlan);
-          this.router.navigate(['/workout-plans']);
+          this.router.navigate(['/plans']);
         },
         error: (error) => {
           console.error('Error updating workout plan', error);
@@ -72,5 +82,16 @@ export class WorkoutPlanEditComponent implements OnInit {
     } else {
       this.selectedDays.push(day);
     }
+  }
+
+  private clearWorkoutPlanData(): void {
+    this.workoutPlan = {
+      workoutPlanId: 0,
+      userId: 'user123',
+      workoutPlanName: '',
+      weekDay: '',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
   }
 }

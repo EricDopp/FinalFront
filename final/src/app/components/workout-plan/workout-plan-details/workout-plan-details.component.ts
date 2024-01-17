@@ -10,7 +10,7 @@ import { WorkoutPlanService } from 'src/app/services/workout-plan.service';
 })
 export class WorkoutPlanDetailsComponent implements OnInit {
   @Input() workoutPlan: WorkoutPlan = {
-    workoutPlanId: NaN, 
+    workoutPlanId: 0, 
     userId: 'user123',
     workoutPlanName: '',
     weekDay: '',

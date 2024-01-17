@@ -2,6 +2,7 @@ export interface WorkoutSets {
   workoutSetId: number;
   workoutPlanId: number;
   userId: string;
+  exerciseName: string;
   exerciseDBId: string;
   repCount: number;
   weight: number;

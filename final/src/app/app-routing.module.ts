@@ -15,11 +15,11 @@ const routes: Routes = [
   {path: 'exercises', component:ExerciseComponent},
   {path: 'plans/make', component:WorkoutPlanCreateComponent},
   {path: 'plans/:id', component:WorkoutPlanDetailsComponent},
-  {path: 'plans/edit', component:WorkoutPlanEditComponent},
+  {path: 'plans/edit/:id', component:WorkoutPlanEditComponent},
   {path: 'plans', component:WorkoutPlanListComponent},
   {path: 'sets/make', component:WorkoutSetsCreateComponent},
   {path: 'sets/:id', component:WorkoutSetsDetailsComponent},
-  {path: 'sets/edit', component:WorkoutSetsEditComponent},
+  {path: 'sets/edit/:id', component:WorkoutSetsEditComponent},
   {path: 'sets', component:WorkoutSetsListComponent},
 ];
 

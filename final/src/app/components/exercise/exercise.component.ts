@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { combineLatest, forkJoin, map, switchMap } from 'rxjs';
+import { Router } from '@angular/router';
 import { BaseExerciseResponse } from 'src/app/models/exercise-response';
 import { WorkoutSets } from 'src/app/models/workout-sets';
 import { ExerciseService } from 'src/app/services/exercise.service';
@@ -84,22 +83,19 @@ export class ExerciseComponent implements OnInit {
   selectedBodyPart: string = '';
   selectedTarget: string = '';
   selectedEquipment: string = '';
-  workoutSetsService: any;
 
   constructor(
     private ExerciseService: ExerciseService,
-    private route: ActivatedRoute,
+    private workoutSetsService: WorkoutSetsService,
     private router: Router
   ) {}
+  
 
   ngOnInit(): void {
     this.selectedSearchCriteria = 'bodyPart';
     this.searchCriteriaList = this.getCriteriaListByCategory(
       this.selectedSearchCategory
     );
-    // this.getBodyPartList();
-    // this.getEquipmentList();
-    // this.getTargetList();
   }
 
   onSearchCategoryChange() {
@@ -160,7 +156,7 @@ export class ExerciseComponent implements OnInit {
         );
         break;
       case 'equipment':
-        this.ExerciseService.getExercisesByBodyPart(
+        this.ExerciseService.getExercisesByEquipment(
           this.selectedSearchCriteria
         ).subscribe(
           (data) => {
@@ -180,32 +176,44 @@ export class ExerciseComponent implements OnInit {
       default:
         console.error('Invalid search category.');
         break;
-
-        
     }
   }
 
-  addExerciseToWorkoutSet(exercise: BaseExerciseResponse): void{
+  addExerciseToWorkoutSet(exercise: BaseExerciseResponse): void {
+    const queryParams = this.router.parseUrl(this.router.url).queryParams;
+    const workoutSetId: number = queryParams['workoutSetId'] ? +queryParams['workoutSetId'] : 0;
+    const workoutPlanId: number = queryParams['workoutPlanId'] ? +queryParams['workoutPlanId'] : 0;
+  
     const newWorkoutSet: WorkoutSets = {
-      workoutSetId: 0,
-      workoutPlanId: 6, // Adjust the workout plan ID as needed
+      workoutSetId: workoutSetId,
+      workoutPlanId: workoutPlanId, // Adjust the workout plan ID as needed
       userId: 'user123',
       exerciseDBId: exercise.id,
+      exerciseName: exercise.name,
       repCount: 0,
       weight: 0,
       weightUnit: '',
       workoutSetCount: 0,
       sortOrder: 0,
     };
-
+  
     this.workoutSetsService.createWorkoutSets(newWorkoutSet).subscribe({
       next: (createdWorkoutSet: WorkoutSets) => {
         console.log('Exercise added to workout set:', createdWorkoutSet);
-        // You can optionally update the UI to reflect the addition
+    
+        // After adding the exercise, navigate back to the workoutSetsList
+        this.router.navigate(['/sets'], { 
+          queryParams: { 
+            workoutPlanId: workoutPlanId, 
+            exerciseId: exercise.id, 
+            exerciseName: exercise.name 
+          } 
+        });
       },
       error: (error: any) => {
         console.error('Error adding exercise to workout set:', error);
       },
     });
-  }
+    
+  }  
 }

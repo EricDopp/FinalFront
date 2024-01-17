@@ -15,6 +15,7 @@ export class WorkoutSetsDetailsComponent implements OnInit {
     workoutPlanId: 0,
     userId: '',
     exerciseDBId: '',
+    exerciseName: '',
     repCount: 0,
     weight: 0,
     weightUnit: '',
@@ -29,8 +30,6 @@ export class WorkoutSetsDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.workoutSetId = 11;
-
     this.workoutSetsService.getWorkoutSetsById(this.workoutSetId).subscribe({
       next: (data: WorkoutSets) => {
         this.workoutSet = data;
