@@ -25,8 +25,13 @@ export class WorkoutPlanDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const workoutPlanId = 1;
-    this.getWorkoutPlan(workoutPlanId);
+    // Use ActivatedRoute to get the workoutPlanId from the route parameters
+    this.route.params.subscribe(params => {
+      const workoutPlanId = +params['id']; // Assuming the parameter is named 'id'
+      
+      // Call the function to fetch the workout plan based on the retrieved id
+      this.getWorkoutPlan(workoutPlanId);
+    });
   }
 
   navigateToWorkoutSets(): void {

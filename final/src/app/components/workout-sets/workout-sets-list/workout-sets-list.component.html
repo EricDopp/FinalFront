@@ -9,10 +9,13 @@
       <li *ngFor="let workoutSet of workoutSets" class="list-group-item">
         <div class="d-flex justify-content-between">
           <div class="col">
-            <strong>Exercise Name:</strong> {{ workoutSet.exerciseName }}
+            <strong>{{ workoutSet.exerciseName }}</strong> 
           </div>
           <div class="col">
-            <strong>Rep Count:</strong> {{ workoutSet.repCount }}
+            <strong></strong>
+          </div>
+          <div class="col">
+            <strong>Reps:</strong> {{ workoutSet.repCount }}
           </div>
           <div class="col">
             <strong>Weight:</strong> {{ workoutSet.weight }}
@@ -21,20 +24,23 @@
           <div class="col">
             <strong>Set Count:</strong> {{ workoutSet.workoutSetCount }}
           </div>
-          <div class="col">
-            <strong>Sort Order:</strong> {{ workoutSet.sortOrder }}
-          </div>
         </div>
+        <button (click)="editWorkoutSet(workoutSet)" class="btn btn-warning">
+          Edit
+        </button>
+        <button (click)="deleteWorkoutSet(workoutSet.workoutSetId)" class="btn btn-danger">
+          Delete
+        </button>
       </li>
     </ul>
-    <button (click)="navigateToExercises()" class="btn btn-primary">
+    <button (click)="navigateToExercises()" class="btn btn-secondary">
       Add Exercise
     </button>
   </div>
 
   <ng-template #noWorkoutSets>
     <p>No workout sets available for this workout plan.</p>
-    <button (click)="navigateToExercises()" class="btn btn-primary">
+    <button (click)="navigateToExercises()" class="btn btn-secondary">
       Add Exercise
     </button>
   </ng-template>

@@ -61,4 +61,23 @@ export class WorkoutSetsListComponent implements OnInit {
       console.error('workoutPlanId is undefined. Cannot navigate to exercises.');
     }
   }
+
+  editWorkoutSet(workoutSet: WorkoutSets): void {
+    this.router.navigate(['sets/edit/', workoutSet.workoutSetId]);
+  }
+
+  deleteWorkoutSet(workoutSetId: number): void {
+    if (confirm('Are you sure you want to delete this workout set?')) {
+      this.workoutSetsService.deleteWorkoutSets(workoutSetId).subscribe({
+        next: () => {
+          // Remove the deleted workout set from the array
+          this.workoutSets = this.workoutSets.filter(ws => ws.workoutSetId !== workoutSetId);
+          console.log('Workout set deleted successfully.');
+        },
+        error: (error: any) => {
+          console.error('Error deleting workout set:', error);
+        },
+      });
+    }
+  }
 }
